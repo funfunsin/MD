@@ -13,7 +13,7 @@
         <div>
             <table style="width:300px">
                 <tr>
-                    <%--顯示屬於哪個美食街,但不能選擇  --%>
+                    <%--顯示屬於哪個美食街,但不能選擇--%>
                     <td>美食街</td>
                     <td>
                         <asp:DropDownList ID="foodcourtNo" runat="server">
