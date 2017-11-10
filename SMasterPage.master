@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SMasterPage.master.cs" Inherits="SMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="images/TOP.jpg" style="width: 100%" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                    <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Font-Size="20px" StaticDisplayLevels="3">
+                        <StaticHoverStyle BackColor="#669999" ForeColor="White" />
+                        <StaticMenuItemStyle HorizontalPadding="1px" VerticalPadding="5px" />
+                    </asp:Menu>
+                </div>
+                <div class="col-xs-10">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+</body>
+</html>

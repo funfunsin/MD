@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="SBulletin.aspx" title="首頁"  description="" >
+    <siteMapNode url="" title="基本資料"  description="" />
+    
+    <siteMapNode url="" title="菜單管理"  description="" >
+      <siteMapNode url="Saddmenu.aspx" title="新增菜單"  description="" />
+      <siteMapNode url="" title="菜單維護"  description="" />
+    </siteMapNode>
+    
+    <siteMapNode url="" title="訂單管理"  description="" >
+      <siteMapNode url="" title="當日訂單"  description="" />
+      <siteMapNode url="" title="歷史訂單"  description="" />
+    </siteMapNode>
+    
+    <siteMapNode url="" title="金流管理"  description="" />
+    
+    <siteMapNode url="" title="數據分析"  description="" >
+      <siteMapNode url="" title="依品項"  description="" />
+      <siteMapNode url="" title="依時段"  description="" />
+    </siteMapNode>
+    
+  </siteMapNode>
+</siteMap>
