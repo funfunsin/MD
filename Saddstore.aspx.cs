@@ -57,4 +57,39 @@ public partial class Saddstore : System.Web.UI.Page
     {
         Response.Redirect("SLogin.aspx");
     }
+
+    //protected void txtTaxID_TextChanged(object sender, EventArgs e)
+    //{
+    //    //強制先完成CustomValidator1驗證
+    //  CustomValidator1.Validate();
+
+    //    //判斷IsValid的值
+    //    if (CustomValidator1.IsValid)
+    //    {
+    //        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["projectConnectionString"].ConnectionString);
+    //        SqlCommand cmd = new SqlCommand("select dbo.fnCheckCourseID('" + txtTaxID.Text + "')", conn);
+
+    //        SqlDataReader dr;
+    //        conn.Open();
+    //        dr = cmd.ExecuteReader();
+    //        dr.Read();
+
+    //        if (dr[0].ToString() == "1")
+    //        {
+    //            lbInfo.Text = "統一編號可用";
+    //            lbInfo.ForeColor = System.Drawing.Color.Green;
+    //        }
+    //        else
+    //        {
+    //            lbInfo.Text = "統一編號重複";
+    //            lbInfo.ForeColor = System.Drawing.Color.Red;
+    //        }
+    //        conn.Close();
+
+    //    }
+    //    else
+    //        lbInfo.Text = "";
+
+    //}
+
 }

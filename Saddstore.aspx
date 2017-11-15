@@ -3,22 +3,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+        ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
+        SelectCommand="SELECT * FROM [store]"
+        InsertCommand="insert into store values (@taxID,@storeName,@tel,@password,@moneyAccount,@foodcourtNo)">
+        <InsertParameters>
+            <asp:ControlParameter Name="taxID" ControlID="txtTaxID" Type="String" />
+            <asp:ControlParameter Name="storeName" ControlID="txtStoreName" Type="String" />
+            <asp:ControlParameter Name="tel" ControlID="txtTel" Type="String" />
+            <asp:ControlParameter Name="password" ControlID="txtPassword" Type="String" />
+            <asp:ControlParameter Name="moneyAccount" ControlID="txtMoneyAccount" Type="String" />
+            <asp:ControlParameter Name="foodcourtNo" ControlID="txtFoodcourtNo" Type="String" />
+        </InsertParameters>
+
+    </asp:SqlDataSource>
     <div class="container">
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server"
-            ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
-            SelectCommand="SELECT * FROM [store]"
-            InsertCommand="insert into store values (@taxID,@storeName,@tel,@password,@moneyAccount,@foodcourtNo)">
-            <InsertParameters>
-                <asp:ControlParameter Name="taxID" ControlID="txtTaxID" Type="String" />
-                <asp:ControlParameter Name="storeName" ControlID="txtStoreName" Type="String" />
-                <asp:ControlParameter Name="tel" ControlID="txtTel" Type="String" />
-                <asp:ControlParameter Name="password" ControlID="txtPassword" Type="String" />
-                <asp:ControlParameter Name="moneyAccount" ControlID="txtMoneyAccount" Type="String" />
-                <asp:ControlParameter Name="foodcourtNo" ControlID="txtFoodcourtNo" Type="String" />
-            </InsertParameters>
-
-        </asp:SqlDataSource>
-
         <table style="width: 80%">
 
             <tr>
@@ -35,9 +35,16 @@
                 <td>*</td>
                 <td>統一編號</td>
                 <td>
-                    <asp:TextBox ID="txtTaxID" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtTaxID" runat="server" ErrorMessage="必填" ForeColor="Red" Display="Dynamic" ValidationGroup="valSend"></asp:RequiredFieldValidator>
-                    <%--要再補統一編號的驗證 & 統一編號是否重複--%>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <%--<asp:TextBox ID="txtTaxID" runat="server" OnTextChanged="txtTaxID_TextChanged" AutoPostBack="true"></asp:TextBox>--%>
+                            <asp:TextBox ID="txtTaxID" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtTaxID" runat="server" ErrorMessage="必填" ForeColor="Red" Display="Dynamic" ValidationGroup="valSend"></asp:RequiredFieldValidator>
+                            <asp:CustomValidator ID="CustomValidator1" ControlToValidate="txtTaxID" ClientValidationFunction="taxIDCheck" runat="server" ErrorMessage="統一編號不正確" ForeColor="Red" Display="Dynamic"></asp:CustomValidator>
+                            <asp:Label ID="lbInfo" runat="server" Text=""></asp:Label>
+                            <%--要再補統一編號的驗證 & 統一編號是否重複--%>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </td>
             </tr>
             <tr>
