@@ -7,7 +7,7 @@
     <div class="container" style="width: 80%">
         <fieldset>
             <legend>店家後台登入</legend>
-            <table id="logintable" style="width: 50%" class="table">
+            <table id="logintable" style="width: 80%" class="table">
                 <tbody>
                     <tr>
                         <td class="text-right">

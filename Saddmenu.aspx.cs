@@ -11,14 +11,10 @@ public partial class Saddmenu : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["taxID"] == null)
-            Response.Redirect("SLogin.aspx");
-        else
-        {
-            lbFoodcourtName.Text = Session["foodcourtName"].ToString();
-            lbStoreName.Text = Session["storeName"].ToString();
-            lbTaxID.Text= Session["taxID"].ToString();
-        }
+
+        lbFoodcourtName.Text = (string)Session["foodcourtName"];
+        lbStoreName.Text = (string)Session["storeName"];
+        lbTaxID.Text = (string)Session["taxID"];
 
     }
 

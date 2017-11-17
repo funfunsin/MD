@@ -11,7 +11,7 @@ public partial class SLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-            
+        Session["taxID"] = "guest";
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -33,6 +33,8 @@ public partial class SLogin : System.Web.UI.Page
             Session["foodcourtName"] = dr["foodcourtName"].ToString();
 
             Response.Redirect("SBulletin.aspx"); //登入成功後進入的頁面!
+
+
         }
         else
         {

@@ -12,9 +12,6 @@ public partial class Saddstore : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["taxID"] == null)
-        //    Response.Redirect("SLogin.aspx");
-
 
         //只有第一次載入時才執行
         if (!IsPostBack)

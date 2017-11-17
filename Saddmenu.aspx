@@ -19,7 +19,7 @@
             <tr>
                 <td>美食街</td>
                 <td>
-                    <asp:Label ID="lbFoodcourtName" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lbFoodcourtName" runat="server" Text='<%=Session["foodcourtName"].ToString()%>'></asp:Label>
                 </td>
             </tr>
             <tr>

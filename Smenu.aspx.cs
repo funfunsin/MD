@@ -5,16 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class SMasterPage : System.Web.UI.MasterPage
+public partial class Smenu : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["taxID"] == null)
-            Response.Redirect("SLogin.aspx");
-        else
-        {
+        lbtaxID.Text = (String)Session["taxID"];
+    }
 
 
-        }
+
+    protected void grvMenu_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        
     }
 }

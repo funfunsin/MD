@@ -5,7 +5,7 @@
     
     <siteMapNode url="" title="菜單管理"  description="" >
       <siteMapNode url="Saddmenu.aspx" title="新增菜單"  description="" />
-      <siteMapNode url="" title="菜單維護"  description="" />
+      <siteMapNode url="Smenu.aspx" title="菜單維護"  description="" />
     </siteMapNode>
     
     <siteMapNode url="" title="訂單管理"  description="" >
