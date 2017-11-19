@@ -4,9 +4,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+
     <div class="container" style="width: 80%">
         <fieldset>
-            <legend>店家後台登入</legend>
+            <legend>abcde店家後台登入</legend>
             <table id="logintable" style="width: 80%" class="table">
                 <tbody>
                     <tr>

@@ -5,14 +5,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/MyStyle.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial,微軟正黑體;
+        }
+        #dpLogin {
+            min-width:200px;
+            padding: 14px 14px 0;
+            overflow: hidden;
+            background-color: rgba(255,255,255,.8);
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">免等後臺系統</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div>
+            <div class="navbar-collapse collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">註冊商家</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">店家登入<span class="caret"></span></a>
+                        <ul id="dpLogin" class="dropdown-menu">
+                            <li class="container">
+                                <div class="row col-xs-12">
+                                    <div>
+                                        <label for="txtTaxID">統一編號：</label>
+                                        <asp:TextBox ID="txtTaxID" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div>
+                                        <label for="txtPassword">密碼：</label>
+                                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                    </div>
+                                    <div>
+                                        <%--<asp:Button ID="btnLogin" runat="server" Text="登入" CssClass="btn btn-primary" />--%>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -34,8 +88,13 @@
             </div>
 
         </div>
+
+
     </form>
     <script src="Scripts/jquery-3.2.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <script>
+        $('button[data-toggle="tooltip"]').tooltip();
+    </script>
 </body>
 </html>
