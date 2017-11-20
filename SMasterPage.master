@@ -17,84 +17,75 @@
         body {
             font-family: Arial,微軟正黑體;
         }
-        #dpLogin {
-            min-width:200px;
-            padding: 14px 14px 0;
-            overflow: hidden;
-            background-color: rgba(255,255,255,.8);
-        }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">免等後臺系統</a>
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div>
-            <div class="navbar-collapse collapse navbar-right">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">註冊商家</a></li>
-                    <li><a href="#">聯絡我們</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">店家登入<span class="caret"></span></a>
-                        <ul id="dpLogin" class="dropdown-menu">
-                            <li class="container">
-                                <div class="row col-xs-12">
-                                    <div>
-                                        <label for="txtTaxID">統一編號：</label>
-                                        <asp:TextBox ID="txtTaxID" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                    <div>
-                                        <label for="txtPassword">密碼：</label>
-                                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                                    </div>
-                                    <div>
-                                        <%--<asp:Button ID="btnLogin" runat="server" Text="登入" CssClass="btn btn-primary" />--%>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">免等後台系統</a>
+                <button class="navbar-toggle" id="menu-toggle">
+                    <%--<span class="sr-only">Toggle navigation</span>--%>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="sidebar-wrapper" class="sidebar-toggle">
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="#item1">Item 1</a>
+                    </li>
+                    <li>
+                        <a href="#item2">Item 2</a>
+                    </li>
+                    <li>
+                        <a href="#item3">Item 3</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
+    <%--目前迫不得已的做法--%>
+    <form id="form1" runat="server">
+        <%--            <div>
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">註冊商家</a></li>
+                        <li><a href="#">聯絡我們</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">店家登入<span class="caret"></span></a>
+                            <ul id="dpLogin" class="dropdown-menu">
+                                <li class="container">
+                                    <div class="row col-xs-12">
+                                        <div>
+                                            <label for="txtTaxID">統一編號：</label>
+                                            <asp:TextBox ID="txtTaxID" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <div>
+                                            <label for="txtPassword">密碼：</label>
+                                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                        </div>
+                                        <div>
+                                            <asp:Button ID="btnLogin" runat="server" Text="登入" CssClass="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>--%>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <img src="images/TOP.jpg" style="width: 100%" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2">
-                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
-                    <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Font-Size="20px" StaticDisplayLevels="3">
-                        <StaticHoverStyle BackColor="#669999" ForeColor="White" />
-                        <StaticMenuItemStyle HorizontalPadding="1px" VerticalPadding="5px" />
-                    </asp:Menu>
-                </div>
-                <div class="col-xs-10">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                </div>
-            </div>
-
-        </div>
+            <img src="images/TOP.jpg" style="width: 100%" />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
 
 
     </form>
     <script src="Scripts/jquery-3.2.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script>
-        $('button[data-toggle="tooltip"]').tooltip();
-    </script>
+    <script src="Scripts/MyJavaScript.js"></script>
 </body>
 </html>
