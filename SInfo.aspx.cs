@@ -9,6 +9,6 @@ public partial class SInfo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        lbtaxID.Text = (string)Session["taxID"];
     }
 }
