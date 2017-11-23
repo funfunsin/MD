@@ -9,9 +9,14 @@ public partial class SBulletin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["taxID"] == null)
-            Response.Redirect("SLogin.aspx");
+        //Session["guest"] = "";
+        //if (Session["taxID"] == null)
+        //    Response.Redirect("SLogin.aspx");
+        //else
+        //{
 
-        lblWelcome.Text = Session["storeName"].ToString() + "歡迎進入後台管理系統!!";
+
+        //}
+        //lblWelcome.Text = Session["storeName"].ToString() + "歡迎進入後台管理系統!!";
     }
 }

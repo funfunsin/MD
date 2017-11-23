@@ -1,14 +1,31 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SMasterPage.master" AutoEventWireup="true" CodeFile="SLogin.aspx.cs" Inherits="SLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LOGIN.aspx.cs" Inherits="LOGIN" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-</asp:Content>
+<!DOCTYPE html>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/MyStyle.css" rel="stylesheet" />
 
+</head>
+<body>
+    <form id="form1" runat="server">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <a id="menu-toggle" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="SBulletin.aspx">免等後台系統</a>
+        </div>
+    </nav>
 
-    <div>
+    <div class="container" style="position:relative; top:80px">
         <fieldset>
-            <legend>店家後台登入</legend>
+            <legend>店家登入</legend>
             <table id="logintable" class="table">
                 <tbody>
                     <tr>
@@ -36,14 +53,16 @@
                 </tbody>
                 <tfoot>
                     <asp:Label ID="lblInfo1" runat="server" Text="還未成為會員?  "></asp:Label>
-                    <asp:LinkButton ID="lkbtnRegister" runat="server" PostBackUrl="~/Saddstore.aspx">註冊商家</asp:LinkButton>
+                    <asp:LinkButton ID="lkbtnRegister" runat="server" PostBackUrl="~/ADD.aspx">註冊商家</asp:LinkButton>
                 </tfoot>
             </table>
 
             <asp:Label ID="lblInfo" runat="server" CssClass="alert-danger"></asp:Label>
         </fieldset>
-
     </div>
+    </form>
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
 
-</asp:Content>
-
+</body>
+</html>

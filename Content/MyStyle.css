@@ -1,0 +1,89 @@
+/*SMasterPage*/
+.navbar-brand {
+    font-size: 25px;
+}
+
+#sidebar-wrapper {
+    top: 50px;
+    left: -200px;
+    width: 200px;
+    background-color: #0e505a;
+    color: white;
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    list-style: none;
+}
+
+.sub-menu {
+    position: inherit;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #2b6c76;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    font-size: 18px;
+    text-indent: 30px;
+    line-height: 50px;
+}
+
+    .sidebar-nav li a {
+        color: white;
+        display: block;
+        text-decoration: none;
+    }
+
+        .sidebar-nav li a:hover {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar-nav li a:active, .sidebar-nav li a:focus {
+            text-decoration: none;
+        }
+
+#sidebar-wrapper.sidebar-toggle {
+    transition: all 0.3s ease-out;
+    margin-left: -200px;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper.sidebar-toggle {
+        transition: 0s;
+        left: 200px;
+    }
+}
+
+#page-wrapper {
+    padding: 10px 10px;
+    min-height: 568px;
+}
+
+@media (min-width: 768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 200px;
+        padding: 10px 10px;
+    }
+}
+
+
+/*SMenu*/
+#ContentPlaceHolder1_grvMenu th {
+    text-align: center;
+    background-color: #373636;
+    color: white;
+}

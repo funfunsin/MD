@@ -1,8 +1,28 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SMasterPage.master" AutoEventWireup="true" CodeFile="Saddstore.aspx.cs" Inherits="Saddstore" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ADD.aspx.cs" Inherits="ADD" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/MyStyle.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <a id="menu-toggle" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="SBulletin.aspx">免等後台系統</a>
+        </div>
+    </nav>
+
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
@@ -18,8 +38,9 @@
         </InsertParameters>
 
     </asp:SqlDataSource>
-    <div class="container">
-        <table style="width: 80%">
+
+    <div class="container" style="position:relative; top:80px">
+        <table>
 
             <tr>
                 <td>*</td>
@@ -95,8 +116,10 @@
             </tr>
 
         </table>
-
     </div>
+    </form>
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
 
-</asp:Content>
-
+</body>
+</html>
