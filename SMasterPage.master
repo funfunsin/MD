@@ -36,7 +36,7 @@
                 <li class="dropdown">
                     <a href="#" class="collapsed" data-toggle="collapse" data-target="#submenu1">訂單管理   <span class="caret"></span></a>
                     <ul class="sub-menu collapse" id="submenu1">
-                        <li><a href="#">當日訂單</a></li>
+                        <li><a href="STodayOrder.aspx">當日訂單</a></li>
                         <li><a href="#">歷史訂單</a></li>
                     </ul>
                 </li>

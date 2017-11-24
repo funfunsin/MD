@@ -58,6 +58,7 @@
 
     </div>
 
+    <%--目前不提供菜單修改--%>
     <asp:GridView ID="grvMenu" runat="server" CssClass="table table-bordered" OnRowDataBound="grvMenu_RowDataBound"
         DataSourceID="SqlDataSource1" AutoGenerateColumns="False" DataKeyNames="mealNo">
         <Columns>
@@ -71,10 +72,10 @@
 
             <asp:TemplateField HeaderText="餐點價格" SortExpression="price" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center">
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtPrice" runat="server" Text='<%# Bind("price") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtPrice" runat="server" Text='<%# Bind("price","{0:C0}") %>'></asp:TextBox>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("price") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("price","{0:C0}") %>'></asp:Label>
                 </ItemTemplate>
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
             </asp:TemplateField>
