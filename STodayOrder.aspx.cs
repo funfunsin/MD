@@ -12,10 +12,22 @@ public partial class STodayOrder : System.Web.UI.Page
         lbtaxID.Text = (String)Session["taxID"];
     }
 
-    protected void grvFinish_RowCommand(object sender, GridViewCommandEventArgs e)
+    protected void grvWaite_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        if (e.CommandName == "Delete") {
-            grvFinished.DataBind();
+        if (e.CommandName == "Delete")
+        {
+            //grvFinish.DataBind(); //不知道為什麼不能用
+            grvFinish.DataSourceID = "SqlDataSource2";
         }
     }
+
+
+    protected void grvFinish_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Delete")
+        {
+            grvWaite.DataSourceID = "SqlDataSource1";
+        }
+    }
+
 }
