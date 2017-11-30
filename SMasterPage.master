@@ -44,7 +44,7 @@
                 <li class="dropdown">
                     <a href="#"  class="collapsed" data-toggle="collapse" data-target="#submenu2">數據分析   <span class="caret"></span></a>
                     <ul class="sub-menu collapse" id="submenu2">
-                        <li><a href="#">依品項</a></li>
+                        <li><a href="SBymeal.aspx">依品項</a></li>
                         <li><a href="#">依時段</a></li>
                     </ul>
                 </li>
@@ -96,6 +96,7 @@
     </form>
     <script src="Scripts/jquery-3.2.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/echarts.min.js"></script>
     <script src="Scripts/MyJavaScript.js"></script>
 </body>
 </html>
