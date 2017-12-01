@@ -6,7 +6,7 @@
     <asp:Label ID="lbtaxID" runat="server" Text="" Visible="false"></asp:Label>
 
     <%--要加上目前排隊人數--%>
-    <%--要判斷餐點是否上架嗎? enabled=1  --%>
+    <%--要判斷訂單時間是否為當日  --%>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
         SelectCommand="select orderContains.orderNo,orderTime,meal.mealName,orderContains.quantity,orderContains.finished,orderContains.mealNo from orderContains inner join meal on orderContains.mealNo=meal.mealNo inner join orderList on orderContains.orderNo=orderList.orderNo where taxID=@taxID and finished=0 and enabled=1"
         DeleteCommand="update orderContains set finished=1 where orderNo=@orderNo and mealNo=@mealNo">
@@ -30,15 +30,9 @@
         </SelectParameters>
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
-        SelectCommand="SELECT * FROM [orderContains] where orderNo=@orderNo">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="grTaken" Name="orderNo" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-
-    <h2>等後製作</h2>
-    <asp:GridView ID="grvWaite" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CssClass="table table-bordered" DataKeyNames="orderNo,mealNo" OnRowCommand="grvWaite_RowCommand" ShowHeaderWhenEmpty="True">
+    <h2>等候製作</h2>
+    <asp:GridView ID="grvWaite" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CssClass="table table-bordered" DataKeyNames="orderNo,mealNo"
+        OnRowCommand="grvWaite_RowCommand" ShowHeaderWhenEmpty="True" EmptyDataText="目前無等候製作之餐點">
         <Columns>
             <asp:BoundField DataField="orderNo" HeaderText="訂單編號" SortExpression="orderNo" />
             <asp:BoundField DataField="orderTime" HeaderText="訂單成立時間" SortExpression="orderTime" />
@@ -49,49 +43,14 @@
 
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="80px"></ItemStyle>
             </asp:CommandField>
-            <asp:TemplateField HeaderText="詳細資料">
-                <ItemTemplate>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="orderNo,mealNo" DataSourceID="SqlDataSource1" EmptyDataText="沒有資料錄可顯示。">
-                        <Columns>
-                            <asp:BoundField DataField="orderNo" HeaderText="orderNo" ReadOnly="True" SortExpression="orderNo" />
-                            <asp:BoundField DataField="mealNo" HeaderText="mealNo" ReadOnly="True" SortExpression="mealNo" />
-                            <asp:BoundField DataField="quantity" HeaderText="quantity" SortExpression="quantity" />
-                            <asp:BoundField DataField="waitingTime" HeaderText="waitingTime" SortExpression="waitingTime" />
-                            <asp:CheckBoxField DataField="finished" HeaderText="finished" SortExpression="finished" />
-                        </Columns>
-                    </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>" DeleteCommand="DELETE FROM [orderContains] WHERE [orderNo] = @orderNo AND [mealNo] = @mealNo" InsertCommand="INSERT INTO [orderContains] ([orderNo], [mealNo], [quantity], [waitingTime], [finished]) VALUES (@orderNo, @mealNo, @quantity, @waitingTime, @finished)" SelectCommand="SELECT [orderNo], [mealNo], [quantity], [waitingTime], [finished] FROM [orderContains] WHERE ([mealNo] = @mealNo)" UpdateCommand="UPDATE [orderContains] SET [quantity] = @quantity, [waitingTime] = @waitingTime, [finished] = @finished WHERE [orderNo] = @orderNo AND [mealNo] = @mealNo">
-                        <DeleteParameters>
-                            <asp:Parameter Name="orderNo" Type="String" />
-                            <asp:Parameter Name="mealNo" Type="String" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="orderNo" Type="String" />
-                            <asp:Parameter Name="mealNo" Type="String" />
-                            <asp:Parameter Name="quantity" Type="Int32" />
-                            <asp:Parameter Name="waitingTime" Type="Int32" />
-                            <asp:Parameter Name="finished" Type="Boolean" />
-                        </InsertParameters>
-                        <SelectParameters>
-                            <asp:Parameter Name="mealNo" Type="String" />
-                        </SelectParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="quantity" Type="Int32" />
-                            <asp:Parameter Name="waitingTime" Type="Int32" />
-                            <asp:Parameter Name="finished" Type="Boolean" />
-                            <asp:Parameter Name="orderNo" Type="String" />
-                            <asp:Parameter Name="mealNo" Type="String" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
-                </ItemTemplate>
-            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 
     <hr />
 
     <h2>製作完成</h2>
-    <asp:GridView ID="grvFinish" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="table table-bordered" DataKeyNames="orderNo,mealNo" OnRowCommand="grvFinish_RowCommand" ShowHeaderWhenEmpty="true">
+    <asp:GridView ID="grvFinish" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="table table-bordered" DataKeyNames="orderNo,mealNo"
+        OnRowCommand="grvFinish_RowCommand" ShowHeaderWhenEmpty="true" EmptyDataText="目前無製作完成及等候取餐之餐點">
         <Columns>
             <asp:BoundField DataField="orderNo" HeaderText="訂單編號" SortExpression="orderNo" />
             <asp:BoundField DataField="orderTime" HeaderText="訂單成立時間" SortExpression="orderTime" />
@@ -104,26 +63,16 @@
     <hr />
 
     <h2>今日已取餐</h2>
-    <asp:GridView ID="grTaken" runat="server" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" DataKeyNames="orderNo" CssClass="table table-bordered" Width="60%">
+    <asp:GridView ID="grTaken" runat="server" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" DataKeyNames="orderNo" CssClass="table table-bordered">
         <Columns>
             <asp:BoundField DataField="orderNo" HeaderText="訂單編號" ReadOnly="True" SortExpression="orderNo" />
             <asp:BoundField DataField="customerID" HeaderText="顧客ID" SortExpression="customerID" />
-            <%--            <asp:BoundField DataField="orderTime" HeaderText="訂單成立時間" SortExpression="orderTime" />
-            <asp:BoundField DataField="total" HeaderText="總金額" SortExpression="total" />--%>
+            <asp:BoundField DataField="orderTime" HeaderText="訂單成立時間" SortExpression="orderTime" />
+            <asp:BoundField DataField="total" HeaderText="總金額" SortExpression="total" />
             <asp:BoundField DataField="takeTime" HeaderText="取餐時間" SortExpression="takeTime" />
             <asp:CommandField ShowSelectButton="True" HeaderText="詳細資料" />
         </Columns>
     </asp:GridView>
-
-    <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" AutoGenerateRows="False" DataKeyNames="orderNo,mealNo" DataSourceID="SqlDataSource4">
-        <Fields>
-            <asp:BoundField DataField="orderNo" HeaderText="orderNo" ReadOnly="True" SortExpression="orderNo" />
-            <asp:BoundField DataField="mealNo" HeaderText="mealNo" ReadOnly="True" SortExpression="mealNo" />
-            <asp:BoundField DataField="quantity" HeaderText="quantity" SortExpression="quantity" />
-            <asp:BoundField DataField="waitingTime" HeaderText="waitingTime" SortExpression="waitingTime" />
-            <asp:CheckBoxField DataField="finished" HeaderText="finished" SortExpression="finished" />
-        </Fields>
-    </asp:DetailsView>
-
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
 </asp:Content>
 

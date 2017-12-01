@@ -52,7 +52,7 @@ public partial class ADD : System.Web.UI.Page
 
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("SLogin.aspx");
+        Response.Redirect("LOGIN.aspx");
     }
 
     //protected void txtTaxID_TextChanged(object sender, EventArgs e)

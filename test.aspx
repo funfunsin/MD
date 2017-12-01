@@ -1,8 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SMasterPage.master" AutoEventWireup="true" CodeFile="test.aspx.cs" Inherits="test" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <asp:TextBox ID="thedate" runat="server"></asp:TextBox>
+
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#thedate').datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
+
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>" SelectCommand="SELECT * FROM [orderList]"></asp:SqlDataSource>
     <%--https://www.youtube.com/watch?v=RoTQWrs0bJs--%>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="orderNo" DataSourceID="SqlDataSource1">
@@ -21,7 +34,11 @@
                             <asp:CheckBoxField DataField="finished" HeaderText="finished" SortExpression="finished" />
                         </Columns>
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>" DeleteCommand="DELETE FROM [orderContains] WHERE [orderNo] = @orderNo AND [mealNo] = @mealNo" InsertCommand="INSERT INTO [orderContains] ([orderNo], [mealNo], [quantity], [waitingTime], [finished]) VALUES (@orderNo, @mealNo, @quantity, @waitingTime, @finished)" SelectCommand="SELECT [orderNo], [mealNo], [quantity], [waitingTime], [finished] FROM [orderContains] WHERE ([orderNo] = @orderNo)" UpdateCommand="UPDATE [orderContains] SET [quantity] = @quantity, [waitingTime] = @waitingTime, [finished] = @finished WHERE [orderNo] = @orderNo AND [mealNo] = @mealNo">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
+                        DeleteCommand="DELETE FROM [orderContains] WHERE [orderNo] = @orderNo AND [mealNo] = @mealNo"
+                        InsertCommand="INSERT INTO [orderContains] ([orderNo], [mealNo], [quantity], [waitingTime], [finished]) VALUES (@orderNo, @mealNo, @quantity, @waitingTime, @finished)"
+                        SelectCommand="SELECT [orderNo], [mealNo], [quantity], [waitingTime], [finished] FROM [orderContains] WHERE ([orderNo] = @orderNo)"
+                        UpdateCommand="UPDATE [orderContains] SET [quantity] = @quantity, [waitingTime] = @waitingTime, [finished] = @finished WHERE [orderNo] = @orderNo AND [mealNo] = @mealNo">
                         <DeleteParameters>
                             <asp:Parameter Name="orderNo" Type="String" />
                             <asp:Parameter Name="mealNo" Type="String" />
@@ -47,6 +64,6 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-</asp:GridView>
+    </asp:GridView>
 </asp:Content>
 

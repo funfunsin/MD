@@ -37,7 +37,7 @@
                     <a href="#" class="collapsed" data-toggle="collapse" data-target="#submenu1">訂單管理   <span class="caret"></span></a>
                     <ul class="sub-menu collapse" id="submenu1">
                         <li><a href="STodayOrder.aspx">當日訂單</a></li>
-                        <li><a href="test.aspx">歷史訂單</a></li>
+                        <li><a href="SOrder.aspx">歷史訂單</a></li>
                     </ul>
                 </li>
                 <li><a href="#">金流管理</a></li>
@@ -95,6 +95,7 @@
 
     </form>
     <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/MyJavaScript.js"></script>
 </body>
