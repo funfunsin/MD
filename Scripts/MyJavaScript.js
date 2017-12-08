@@ -1,7 +1,7 @@
 ﻿$(window).resize(function () {
     var path = $(this);
     var contW = path.width();
-    if (contW >= 751) {
+    if (contW >= 767) {
         document.getElementsByClassName("sidebar-toggle")[0].style.left = "200px";
     } else {
         document.getElementsByClassName("sidebar-toggle")[0].style.left = "-200px";

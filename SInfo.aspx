@@ -4,13 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div>
-        <asp:Label ID="lbtaxID" runat="server" Text="" Visible="false"></asp:Label>
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
             SelectCommand="SELECT * FROM [store] where taxID=@taxID and enabled=1" 
             UpdateCommand="Update [store] set tel=@tel, moneyAccount=@moneyAccount where taxID=@taxID">
             <SelectParameters>
-                <asp:ControlParameter ControlID="lbtaxID" Name="taxID" Type="String" />
+                <asp:SessionParameter SessionField="taxID" Name="taxID" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
         <div>
@@ -28,11 +27,11 @@
                         </tr>
                         <tr>
                             <td>電話</td>
-                            <td><asp:TextBox ID="txtTel" runat="server" Text='<%# Bind("tel") %>' /></td>
+                            <td><asp:TextBox ID="txtTel" runat="server" Text='<%# Bind("tel") %>'  CssClass="form-control" /></td>
                         </tr>
                         <tr>
                             <td>金流帳戶</td>
-                            <td><asp:TextBox ID="txtMoneyAccount" runat="server" Text='<%# Bind("moneyAccount") %>' /></td>
+                            <td><asp:TextBox ID="txtMoneyAccount" runat="server" Text='<%# Bind("moneyAccount") %>'  CssClass="form-control" /></td>
                         </tr>
                         <tr>
                             <td>店家圖片</td>
@@ -87,4 +86,3 @@
 
     </div>
 </asp:Content>
-

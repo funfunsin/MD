@@ -1,16 +1,40 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SMasterPage.master" AutoEventWireup="true" CodeFile="SBymeal.aspx.cs" Inherits="SBymeal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SMasterPage.master" AutoEventWireup="true" CodeFile="SByMeal.aspx.cs" Inherits="SByMeal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div id="main" style="width: 600px; height: 400px;">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
+        SelectCommand="select meal.mealName,sum(orderContains.quantity) as quantity from orderContains inner join meal on orderContains.mealNo=meal.mealNo inner join orderList on orderContains.orderNo=orderList.orderNo where taxID=@taxID group by meal.mealName">
+        <SelectParameters>
+            <asp:SessionParameter SessionField="taxID" Name="taxID" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:GridView ID="grvBymeal" runat="server" DataSourceID="SqlDataSource1" CssClass="grvBymeal"></asp:GridView>
+
+    <div id="bymeal" style="width: 600px; height: 400px;">
     </div>
 
-
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
     <script src="Scripts/echarts.min.js"></script>
     <script>
+        $('#ContentPlaceHolder1_grvBymeal').hide();
+
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
+        var myChart = echarts.init(document.getElementById('bymeal'));
+
+        var mealname_arry = [];
+        var quantity_arry = [];
+
+        $(".grvBymeal>tbody>tr>td").each(function (i) {
+            if (i % 2 == 0) {
+                mealname = $(this).text();
+            }
+            if (i % 2 == 1) {
+                quantity = Number($(this).text());
+                mealname_arry.push(mealname);
+                quantity_arry.push(quantity);
+            }
+        });
 
         // 指定图表的配置项和数据
         var option = {
@@ -20,12 +44,7 @@
             },
             tooltip: {
                 trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['2011年', '2012年']
+                axisPointer: {type: 'shadow'}
             },
             grid: {
                 left: '3%',
@@ -35,28 +54,29 @@
             },
             xAxis: {
                 type: 'value',
-                boundaryGap: [0, 0.01]
+                boundaryGap: [0,'20%']
             },
             yAxis: {
                 type: 'category',
-                data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+                data: mealname_arry,
+                boundaryGap: [0, '20%']
             },
-            series: [
-                {
-                    name: '2011年',
-                    type: 'bar',
-                    data: [18203, 23489, 29034, 104970, 131744, 630230]
-                },
-                {
-                    name: '2012年',
-                    type: 'bar',
-                    data: [19325, 23438, 31000, 121594, 134141, 681807]
-                }
-            ]
+            series: {
+                name: '數量',
+                type: 'bar',
+                barWidth: '30px',
+                data: quantity_arry
+            }
         };
+
+
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
+
+
+
+
 </asp:Content>
 

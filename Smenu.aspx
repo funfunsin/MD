@@ -4,26 +4,27 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <%--只載入該店家的菜單--%>
-    <asp:Label ID="lbtaxID" runat="server" Text="" Visible="false"></asp:Label>
+
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
         SelectCommand="Select * FROM [meal] where taxID=@taxID and enabled=1 "
         UpdateCommand="Update [meal] set price=@price, mealTime=@mealTime, img=@img where mealNo=@mealNo"
-        DeleteCommand="update [meal] set enabled=0 where mealNo=@mealNo" >
+        DeleteCommand="update [meal] set enabled=0 where mealNo=@mealNo">
         <SelectParameters>
-            <asp:ControlParameter ControlID="lbtaxID" Name="taxID" Type="String" />
+            <asp:SessionParameter SessionField="taxID" Name="taxID" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
 
     <asp:LinkButton ID="lkbAddmeal" CssClass="btn btn-success" runat="server" data-toggle="modal" data-target="#Addmeal">
-        <span class="glyphicon glyphicon-plus"></span> 新增餐點
+        <span class="glyphicon glyphicon-plus" style="color:white; font-size:16px;"></span> 新增餐點
     </asp:LinkButton>
+    <hr />
 
     <div class="modal" id="Addmeal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
                     <h2 class="text-center">餐點新增</h2>
                 </div>
                 <div class="modal-body">
@@ -102,8 +103,7 @@
                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
             </asp:TemplateField>
 
-            <asp:CommandField ButtonType="Button" ControlStyle-CssClass="btn btn-danger" HeaderText="管理" ShowDeleteButton="True" ItemStyle-Width="80px" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" DeleteText="下架">
-            </asp:CommandField>
+            <asp:CommandField ButtonType="Button" ControlStyle-CssClass="btn btn-danger" HeaderText="管理" ShowDeleteButton="True" ItemStyle-Width="80px" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" DeleteText="下架"></asp:CommandField>
         </Columns>
 
     </asp:GridView>

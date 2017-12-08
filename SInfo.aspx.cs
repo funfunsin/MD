@@ -11,7 +11,7 @@ public partial class SInfo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        lbtaxID.Text = (string)Session["taxID"];
+
     }
 
 
@@ -24,20 +24,20 @@ public partial class SInfo : System.Web.UI.Page
             {
                 FileUpload fulImg = ((FileUpload)StoreData.FindControl("fulImg"));
                 //判斷檔案類型是否正確
-                subfilename = fulImg.FileName.Substring(fulImg.FileName.IndexOf(".") + 1, 3);
+                subfilename = fulImg.FileName.Substring(fulImg.FileName.IndexOf(".") + 1, 3).ToLower();
                 if (subfilename == "jpg" || subfilename == "png")
                 {
-                    fulImg.SaveAs(Server.MapPath("/images/store/" + lbtaxID.Text + ".jpg"));
+                    fulImg.SaveAs(Server.MapPath("/images/store/" + Session["taxID"] + ".jpg"));
                 }
                 else
                 {
-                    //Label1.Text = "請檢查圖片檔案正確性!";
+                    Response.Write("<script>alert('請檢查圖片檔案正確性!')</script>");
                 }
             }
         }
         catch(Exception ex)
         {
-            Response.Write("檔案上傳失敗!" + ex.Message);
+            Response.Write(ex.Message);
         }
 
     }

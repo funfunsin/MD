@@ -13,7 +13,6 @@ public partial class Smenu : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        lbtaxID.Text = (String)Session["taxID"];
         txtMealNo.Text = getMealNo();
     }
     protected string getMealNo()
@@ -46,7 +45,7 @@ public partial class Smenu : System.Web.UI.Page
             comm.Parameters.AddWithValue("@mealName", txtMealName.Text);
             comm.Parameters.AddWithValue("@price", txtPrice.Text);
             comm.Parameters.AddWithValue("@mealTime", txtMealTime.Text);
-            comm.Parameters.AddWithValue("@taxID", lbtaxID.Text);
+            comm.Parameters.AddWithValue("@taxID", Session["taxID"]);
             comm.Parameters.AddWithValue("@img", txtMealNo.Text);
 
             conn.Open();

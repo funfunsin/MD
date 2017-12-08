@@ -1,13 +1,137 @@
+.navbar-toggle, .menu-toggle {
+    border:none;
+}
+.glyphicon {
+    font-size: 20px;
+    color: #90A4AE;
+}
+
+/*navbar-inverse*/
+.navbar-inverse {
+  background-color: #37474F;
+  border-color: #080808;
+}
+.navbar-inverse .navbar-brand {
+  color: #FFFFF3;
+  font-weight:900;
+}
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  color: #F7B633;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-text {
+  color: #FFFFF3;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #FFFFF3;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #F7B633;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #F7B633;
+  background-color: #080808;
+}
+.navbar-inverse .navbar-nav > .disabled > a,
+.navbar-inverse .navbar-nav > .disabled > a:hover,
+.navbar-inverse .navbar-nav > .disabled > a:focus {
+  color: #444;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #333;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #F7B633;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #101010;
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #F7B633;
+  background-color: #080808;
+}
+@media (max-width: 767px) {
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
+    border-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+    background-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #FFFFF3;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #F7B633;
+    background-color: transparent;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #F7B633;
+    background-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #444;
+    background-color: transparent;
+  }
+}
+.navbar-inverse .navbar-link {
+  color: #FFFFF3;
+}
+.navbar-inverse .navbar-link:hover {
+  color: #F7B633;
+}
+.navbar-inverse .btn-link {
+  color: #FFFFF3;
+}
+.navbar-inverse .btn-link:hover,
+.navbar-inverse .btn-link:focus {
+  color: #F7B633;
+}
+.navbar-inverse .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-inverse .btn-link:hover,
+.navbar-inverse .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-inverse .btn-link:focus {
+  color: #444;
+}
+
+
 /*SMasterPage*/
 .navbar-brand {
     font-size: 25px;
 }
 
+#myNavbar {
+    font-size: 16px;
+    padding-right: 20px;
+}
+
+.navbar-inverse {
+    height: 55px;
+}
+
+
 #sidebar-wrapper {
-    top: 50px;
+    top: 55px;
     left: -200px;
     width: 200px;
-    background-color: #0e505a;
+    background-color: #607D8B;
     color: white;
     position: fixed;
     height: 100%;
@@ -29,13 +153,13 @@
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #2b6c76;
+    background-color: #90A4AE;
     list-style: none;
 }
 
 .sidebar-nav li {
     font-size: 18px;
-    text-indent: 30px;
+    text-indent: 20px;
     line-height: 50px;
 }
 
@@ -43,6 +167,10 @@
         color: white;
         display: block;
         text-decoration: none;
+    }
+        .sidebar-nav li a span {
+        color: white;
+        left:-15px;
     }
 
         .sidebar-nav li a:hover {
@@ -60,7 +188,7 @@
     margin-left: -200px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
     #sidebar-wrapper.sidebar-toggle {
         transition: 0s;
         left: 200px;
@@ -72,7 +200,7 @@
     min-height: 568px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
     #page-wrapper {
         position: inherit;
         margin: 0 0 0 200px;
@@ -86,4 +214,7 @@
     text-align: center;
     background-color: #373636;
     color: white;
+}
+#ContentPlaceHolder1_grvMenu {
+    background-color: white;
 }

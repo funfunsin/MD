@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:Label ID="lbtaxID" runat="server" Text="" Visible="false"></asp:Label>
 
     <%--自訂選擇區間--%>
     <asp:Label ID="lbTime" runat="server" Text="選擇時間區間："></asp:Label>
@@ -15,10 +14,12 @@
     <asp:LinkButton ID="lkEndTime" runat="server" OnClick="lkEndTime_Click"><span class="glyphicon glyphicon-calendar"></span></asp:LinkButton>
     <asp:Calendar ID="CalendarEnd" runat="server" Visible="false" OnSelectionChanged="CalendarEnd_SelectionChanged"></asp:Calendar>
 
+    <hr />
+
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
         SelectCommand="select distinct orderList.orderNo,orderList.customerID,orderList.orderTime,orderList.total,orderList.takeTime from orderList inner join orderContains on orderList.orderNo=orderContains.orderNo inner join meal on orderContains.mealNo=meal.mealNo where taxID=@taxID and taken=1 and (convert(date,orderList.orderTime) between @BeginTime and @EndTime)">
         <SelectParameters>
-            <asp:ControlParameter ControlID="lbtaxID" Name="taxID" Type="String" />
+            <asp:SessionParameter SessionField="taxID" Name="taxID" Type="String" />
             <asp:ControlParameter ControlID="txtBeginTime" Name="BeginTime" Type="String" />
             <asp:ControlParameter ControlID="txtEndTime" Name="EndTime" Type="String" />
         </SelectParameters>
