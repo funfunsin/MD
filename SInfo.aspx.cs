@@ -9,9 +9,9 @@ using System.Web.UI.WebControls;
 
 public partial class SInfo : System.Web.UI.Page
 {
+    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["projectConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
 
@@ -28,6 +28,12 @@ public partial class SInfo : System.Web.UI.Page
                 if (subfilename == "jpg" || subfilename == "png")
                 {
                     fulImg.SaveAs(Server.MapPath("/images/store/" + Session["taxID"] + ".jpg"));
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("update store set img='" + Session["taxID"] + "' where taxID=@taxID", conn);
+                    cmd.Parameters.AddWithValue("@taxID", Session["taxID"]);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
                 }
                 else
                 {
@@ -38,6 +44,25 @@ public partial class SInfo : System.Web.UI.Page
         catch(Exception ex)
         {
             Response.Write(ex.Message);
+        }
+    }
+
+    protected void btnUpdate_Click(object sender, EventArgs e)
+    {
+        if (txtNewPassword.Text == txtPasswordconfirm.Text)
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("update store set password='"+ txtPasswordconfirm.Text+ "' where taxID=@taxID", conn);
+            cmd.Parameters.AddWithValue("@taxID", Session["taxID"]);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            lbPasswordInfo.Text = "密碼更新成功!";
+            lbPasswordInfo.ForeColor = System.Drawing.Color.Green;
+        }
+        else
+        {
+            lbPasswordInfo.Text = "密碼確認與新密碼不符!";
+            lbPasswordInfo.ForeColor = System.Drawing.Color.Red;
         }
 
     }

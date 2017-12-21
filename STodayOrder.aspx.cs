@@ -35,4 +35,12 @@ public partial class STodayOrder : System.Web.UI.Page
     }
 
 
+
+    protected void grTaken_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "select")
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "$('#detail').modal()", true);
+        }
+    }
 }
