@@ -17,7 +17,7 @@
         body {
             font-family: Arial,微軟正黑體;
             font-size: 14px;
-            background-color: #f4f7f7;
+            /*background-color: #f4f7f7;*/
         }
     </style>
 </head>
@@ -34,7 +34,9 @@
                 <span class="glyphicon glyphicon-envelope"></span>
             </a>
             <a class="navbar-brand" href="SBulletin.aspx" title="回首頁"><span>免等後台系統</span></a>
+            <input type="text" class="navbar-text" style="color:dimgray; width:110px; vertical-align:middle" id="txtQRcode" placeholder="掃描QRcode" />
         </div>
+
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a data-toggle="modal" data-target="#Mail">聯絡我們</a></li>
@@ -72,7 +74,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button class="close" data-dismiss="modal">&times;</button>
-                        <h3 class="text-center"><span class="glyphicon glyphicon-envelope" style="color: #90A4AE"></span>   聯絡我們</h3>
+                        <h3 class="text-center"><span class="glyphicon glyphicon-envelope" style="color: #90A4AE"></span>聯絡我們</h3>
                     </div>
                     <div class="modal-body">
                         <div>
@@ -91,13 +93,26 @@
                             <asp:TextBox ID="txtContent" runat="server" CssClass="form-control" TextMode="MultiLine" Height="150px"></asp:TextBox>
                         </div>
                         <div class="modal-footer">
-                            <asp:Button ID="btnMail" runat="server" Text="送出" CssClass="btn btn-primary" ValidationGroup="valMail" OnClick="btnMail_Click"/>
+                            <asp:Button ID="btnMail" runat="server" Text="送出" CssClass="btn btn-primary" ValidationGroup="valMail" OnClick="btnMail_Click" />
                             <input id="Reset2" type="reset" value="重設" class="btn btn-default" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <%--用來update 訂單的taken--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:HiddenField ID="txtorderno" runat="server" />
+        <asp:Button ID="btnupdatetaken" runat="server" OnClick="btnupdatetaken_Click" />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="btnupdatetaken" />
+            </Triggers>
+            <ContentTemplate>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"></asp:SqlDataSource>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
         <%-- <img src="images/TOP.jpg" style="width: 100%" />--%>
         <div id="page-wrapper">
@@ -135,6 +150,16 @@
             $('.navbar-brand').text('');
             $('.navbar-brand').addClass('glyphicon glyphicon-home');
         }
+        var len;
+        //$('#txtQRcode').focus();
+        $("#txtQRcode").keyup(function () {
+            len = $(this).val().length;
+            if (len == 10) {
+                $('#txtorderno').val($('#txtQRcode').val());
+                $('#btnupdatetaken').click();
+                $('#txtQRcode').val('');
+            }
+        });
     </script>
 </body>
 </html>

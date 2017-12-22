@@ -3,8 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div>
-
+    <div style="padding:0px 15px 15px 15px">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:projectConnectionString %>"
             SelectCommand="SELECT * FROM [store] where taxID=@taxID and enabled=1"
             UpdateCommand="Update [store] set tel=@tel, moneyAccount=@moneyAccount where taxID=@taxID">
@@ -82,7 +81,7 @@
                 </ItemTemplate>
             </asp:FormView>
         </div>
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
         <div id="PasswordTable" style="width:300px">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>

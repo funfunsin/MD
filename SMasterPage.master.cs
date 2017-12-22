@@ -10,7 +10,7 @@ public partial class SMasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["taxID"] == null )
+        if (Session["taxID"] == null)
         {
             Response.Redirect("LOGIN.aspx");
         }
@@ -18,8 +18,16 @@ public partial class SMasterPage : System.Web.UI.MasterPage
         {
 
         }
-
     }
+
+    protected void btnupdatetaken_Click(object sender, EventArgs e)
+    {
+        SqlDataSource1.UpdateCommand = "update orderList set taken = 1 where orderNo = '" + txtorderno.Value + "'";
+        SqlDataSource1.Update();
+        Session["QR"] = "1";
+        Response.Redirect("STodayOrder.aspx");
+    }
+
     protected void btnMail_Click(object sender, EventArgs e)
     {
         //聯絡我們
