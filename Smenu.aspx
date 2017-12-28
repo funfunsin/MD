@@ -93,12 +93,12 @@
 
                 <asp:TemplateField HeaderText="餐點圖片" SortExpression="img" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center">
                     <EditItemTemplate>
-                        <img src='images/meal/<%# Eval("img") %>.jpg' height="50" /><br />
+                        <img src='images/meal/<%# Eval("img") %>.png' height="50" /><br />
                         <asp:FileUpload ID="fulImg" runat="server" />
                         <asp:TextBox ID="txtImg" runat="server" Text='<%# Bind("img") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <img src='images/meal/<%# Eval("img") %>.jpg' height="120" />
+                        <img src='images/meal/<%# Eval("img") %>.png' height="120" />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                 </asp:TemplateField>
