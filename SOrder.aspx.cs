@@ -57,4 +57,12 @@ public partial class SOrder : System.Web.UI.Page
     {
 
     }
+
+    protected void grv_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "select")
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "$('#detail').modal()", true);
+        }
+    }
 }
